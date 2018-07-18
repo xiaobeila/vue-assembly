@@ -3,25 +3,25 @@
 </template>
 
 <script>
-import echarts from "echarts";
+import echarts from 'echarts'
 
 export default {
   props: {
     className: {
       type: String,
-      default: "chart"
+      default: 'chart'
     },
     id: {
       type: String,
-      default: "chart"
+      default: 'chart'
     },
     width: {
       type: String,
-      default: "200px"
+      default: '200px'
     },
     height: {
       type: String,
-      default: "200px"
+      default: '200px'
     },
     // 参数
     chartData: {
@@ -39,30 +39,30 @@ export default {
       default: null
     }
   },
-  data() {
+  data () {
     return {
       chart: null
-    };
-  },
-  mounted() {
-    this.initChart();
-  },
-  beforeDestroy() {
-    if (!this.chart) {
-      return;
     }
-    this.chart.dispose();
-    this.chart = null;
+  },
+  mounted () {
+    this.initChart()
+  },
+  beforeDestroy () {
+    if (!this.chart) {
+      return
+    }
+    this.chart.dispose()
+    this.chart = null
   },
   methods: {
-    initChart() {
-      this.chart = echarts.init(document.getElementById(this.id));
+    initChart () {
+      this.chart = echarts.init(document.getElementById(this.id))
 
-      const xAxisData = this.chartData || [];
-      const data = this.dataOne || [];
-      const data2 = this.dataTwo || [];
+      const xAxisData = this.chartData || []
+      const data = this.dataOne || []
+      const data2 = this.dataTwo || []
       this.chart.setOption({
-        backgroundColor: "#08263a",
+        backgroundColor: '#08263a',
         xAxis: [
           {
             show: false,
@@ -80,12 +80,12 @@ export default {
           dimension: 0,
           inRange: {
             color: [
-              "#4a657a",
-              "#308e92",
-              "#b1cfa5",
-              "#f5d69f",
-              "#f5898b",
-              "#ef5055"
+              '#4a657a',
+              '#308e92',
+              '#b1cfa5',
+              '#f5d69f',
+              '#f5898b',
+              '#ef5055'
             ]
           }
         },
@@ -95,13 +95,13 @@ export default {
           },
           axisLabel: {
             textStyle: {
-              color: "#4a657a"
+              color: '#4a657a'
             }
           },
           splitLine: {
             show: true,
             lineStyle: {
-              color: "#08263f"
+              color: '#08263f'
             }
           },
           axisTick: {
@@ -110,8 +110,8 @@ export default {
         },
         series: [
           {
-            name: "back",
-            type: "bar",
+            name: 'back',
+            type: 'bar',
             data: data2,
             z: 1,
             itemStyle: {
@@ -119,35 +119,35 @@ export default {
                 opacity: 0.4,
                 barBorderRadius: 5,
                 shadowBlur: 3,
-                shadowColor: "#111"
+                shadowColor: '#111'
               }
             }
           },
           {
-            name: "Simulate Shadow",
-            type: "line",
+            name: 'Simulate Shadow',
+            type: 'line',
             data,
             z: 2,
             showSymbol: false,
             animationDelay: 0,
-            animationEasing: "linear",
+            animationEasing: 'linear',
             animationDuration: 1200,
             lineStyle: {
               normal: {
-                color: "transparent"
+                color: 'transparent'
               }
             },
             areaStyle: {
               normal: {
-                color: "#08263a",
+                color: '#08263a',
                 shadowBlur: 50,
-                shadowColor: "#000"
+                shadowColor: '#000'
               }
             }
           },
           {
-            name: "front",
-            type: "bar",
+            name: 'front',
+            type: 'bar',
             data,
             xAxisIndex: 1,
             z: 3,
@@ -158,16 +158,16 @@ export default {
             }
           }
         ],
-        animationEasing: "elasticOut",
-        animationEasingUpdate: "elasticOut",
-        animationDelay(idx) {
-          return idx * 20;
+        animationEasing: 'elasticOut',
+        animationEasingUpdate: 'elasticOut',
+        animationDelay (idx) {
+          return idx * 20
         },
-        animationDelayUpdate(idx) {
-          return idx * 20;
+        animationDelayUpdate (idx) {
+          return idx * 20
         }
-      });
+      })
     }
   }
-};
+}
 </script>

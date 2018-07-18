@@ -3,25 +3,25 @@
 </template>
 
 <script>
-import echarts from "echarts";
+import echarts from 'echarts'
 
 export default {
   props: {
     className: {
       type: String,
-      default: "chart"
+      default: 'chart'
     },
     id: {
       type: String,
-      default: "chart"
+      default: 'chart'
     },
     width: {
       type: String,
-      default: "200px"
+      default: '200px'
     },
     height: {
       type: String,
-      default: "200px"
+      default: '200px'
     },
     // 参数
     chartData: {
@@ -36,35 +36,35 @@ export default {
     // 前缀
     name: {
       type: String,
-      default: ""
+      default: ''
     }
   },
-  data() {
+  data () {
     return {
       chart: null
-    };
-  },
-  mounted() {
-    this.initChart();
-  },
-  beforeDestroy() {
-    if (!this.chart) {
-      return;
     }
-    this.chart.dispose();
-    this.chart = null;
+  },
+  mounted () {
+    this.initChart()
+  },
+  beforeDestroy () {
+    if (!this.chart) {
+      return
+    }
+    this.chart.dispose()
+    this.chart = null
   },
   methods: {
-    initChart() {
-      let that = this;
-      this.chart = echarts.init(document.getElementById(this.id));
+    initChart () {
+      let that = this
+      this.chart = echarts.init(document.getElementById(this.id))
 
-      const xAxisData = this.chartData || [];
-      const data = this.chartKeyData || [];
+      const xAxisData = this.chartData || []
+      const data = this.chartKeyData || []
       this.chart.setOption({
-        backgroundColor: "#08263a",
+        backgroundColor: '#08263a',
         tooltip: {
-          trigger: "axis"
+          trigger: 'axis'
         },
         xAxis: {
           show: false,
@@ -77,12 +77,12 @@ export default {
           dimension: 0,
           inRange: {
             color: [
-              "#4a657a",
-              "#308e92",
-              "#b1cfa5",
-              "#f5d69f",
-              "#f5898b",
-              "#ef5055"
+              '#4a657a',
+              '#308e92',
+              '#b1cfa5',
+              '#f5d69f',
+              '#f5898b',
+              '#ef5055'
             ]
           }
         },
@@ -92,41 +92,41 @@ export default {
           },
           axisLabel: {
             textStyle: {
-              color: "#4a657a"
+              color: '#4a657a'
             }
           },
           splitLine: {
             show: true,
             lineStyle: {
-              color: "#08263f"
+              color: '#08263f'
             }
           },
           axisTick: {}
         },
         series: [
           {
-            type: "bar",
+            type: 'bar',
             data,
             name: that.name,
             itemStyle: {
               normal: {
                 barBorderRadius: 5,
                 shadowBlur: 10,
-                shadowColor: "#111"
+                shadowColor: '#111'
               }
             },
-            animationEasing: "elasticOut",
-            animationEasingUpdate: "elasticOut",
-            animationDelay(idx) {
-              return idx * 20;
+            animationEasing: 'elasticOut',
+            animationEasingUpdate: 'elasticOut',
+            animationDelay (idx) {
+              return idx * 20
             },
-            animationDelayUpdate(idx) {
-              return idx * 20;
+            animationDelayUpdate (idx) {
+              return idx * 20
             }
           }
         ]
-      });
+      })
     }
   }
-};
+}
 </script>
